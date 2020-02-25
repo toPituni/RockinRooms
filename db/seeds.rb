@@ -16,8 +16,8 @@ u3 = User.create!(email: 'jan2@gmail.com', password: 'whatever')
 puts "#{User.count} users just created"
 
 
-Room.create!(name: 'super Beautiful Rehearsal Room', description: "description", address: "address", price: 75, equipment: "equipment available", district: "district Mitte", user: u1 )
-Room.create!(name: 'very Beautiful Rehearsal Room', description: "description", address: "address", price: 50, equipment: "equipment available", district: "district Mitte", user: u2 )
-Room.create!(name: 'Beautiful Rehearsal Room', description: "description", address: "address", price: 30, equipment: "equipment available", district: "district Mitte", user: u3 )
+Room.create!(image_url: 'https://images.pexels.com/photos/164938/pexels-photo-164938.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', name: 'Professional Studio', description: "Fully equipped studio with amazing sound qualities. Suitable for professional music production.5sqm", address: "Rudi-Dutschke-Strasse 5", price: 75, equipment: "fully equipped", district: "Mitte", user: u1 )
+Room.create!(image_url: 'https://images.pexels.com/photos/1327426/pexels-photo-1327426.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', name: 'Amazing Rehearsal Room', description: "Partly equipped rehearsal room for bands. 35sqm", address: "Linienstrasse 89", price: 50, equipment: "Drum Kit, Microphones, 2 x amplifiers ", district: "Mitte", user: u2 )
+Room.create!(image_url: 'https://images.pexels.com/photos/1267297/pexels-photo-1267297.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',name: 'Outdoor Rehearsal Room', description: "Enjoy this hawaiian atmoshere in Mitte", address: "Friedrichstrasse 180", price: 30, equipment: "contrabass, drum kit, keyboard", district: "Mitte", user: u3 )
 
 puts "#{Room.count} rooms just created"
