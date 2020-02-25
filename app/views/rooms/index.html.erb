@@ -3,8 +3,7 @@
 
 <ul>
   <% @rooms.each do |room| %>
-  <% raise %>
-    <li><%= room[:name] %> <%= room[:address] %><%= room[:price] %>
-    <%= room[:description] %><%= room[:equipment] %><%= room[:district] %></li>
+    <li> Room: <%= room.name %> Address: <%= room.address %> Price: <%= room.price %>
+   Description: <%= room.description %> Equipment: <%= room.equipment %> District: <%= room.district %></li>
   <% end %>
 </ul>
