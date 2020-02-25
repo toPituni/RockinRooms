@@ -1,3 +1,26 @@
+
+<h1>Rooms#index</h1>
+<p>Find me HELLO HELLO in app/views/rooms/index.html.erb</p>
+
+<div class="container">
+  <div class="form-wrapper" style="width: 500px; margin: 0 auto;">
+    <h1>Flatoickr Demo</h1>
+<%= simple_form_for :search, url: search_room_path, method: :get do |t| %>
+<%= t.input :start_date, as: :string, input_html: { class: "datepicker"} %>
+<%= t.input :end_date, as: :string, input_html: { class: "datepicker"} %>
+ <%= t.input :district, collection: ["Mitte", "Prenzlauer Berg", "Wedding"] %>
+  <%= t.submit "search", class: "btn btn-primary" %>
+<% end %>
+  </div>
+</div>
+
+<ul>
+  <% @rooms.each do |room| %>
+    <li> Room: <%= room.name %> Address: <%= room.address %> Price: <%= room.price %>
+   Description: <%= room.description %> Equipment: <%= room.equipment %> District: <%= room.district %></li>
+  <% end %>
+</ul>
+
 <div class="background_image">
 
   <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
@@ -53,3 +76,4 @@
 
 
 <!-- # Check out the UI kit of LeWagon -->
+
