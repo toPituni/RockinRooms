@@ -9,7 +9,6 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
@@ -57,8 +56,6 @@
     <% end %>
 </div>
 
-
-
   <div class="container">
     <% @rooms.each do |room| %>
       <div class="card-product">
@@ -70,17 +67,10 @@
           <h2 class="price"><strong><%= room.price %></strong> Złoty / hour</h2>
           <p><strong>Equipment:</strong> <%= room.equipment %></p>
           <p><strong>Description:</strong> <%= room.description %></p>
-          <%= link_to "Book now", "#", class: "btn btn-flat card-product-btn" %>
+          <%= link_to "Book now", new_room_booking_path(room), class: "btn btn-flat card-product-btn" %>
         </div>
       </div>
     <% end %>
   </div>
-
 </div>
 </div>
-
-
-
-
-<!-- # Check out the UI kit of LeWagon -->
-
