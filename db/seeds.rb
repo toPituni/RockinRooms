@@ -30,5 +30,4 @@ puts "#{Room.count} rooms just created"
 Booking.create!(start_time: "2020-02-12 13:00", end_time: "2020-02-12 15:00", user: u1, room: r1)
 Booking.create!(start_time: "2020-02-12 13:00", end_time: "2020-02-12 15:00", user: u2, room: r2)
 Booking.create!(start_time: "2020-02-12 07:00", end_time: "2020-02-12 08:00", user: u3, room: r3)
-Booking.create!(start_time: "2020-02-12 09:00", end_time: "2020-02-12 10:00", user: u3, room: r3)
 Booking.create!(start_time: "2020-02-12 10:00", end_time: "2020-02-12 11:00", user: u3, room: r4)
