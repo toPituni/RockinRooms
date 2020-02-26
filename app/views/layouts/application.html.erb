@@ -10,6 +10,7 @@
     <%= stylesheet_pack_tag 'application' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
+
     <p class="notice" style="margin: 0;"><%= notice %></p>
     <p class="alert"><%= alert %></p>
      <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
@@ -33,6 +34,7 @@
       </ul>
     </div>
   </div>
+    <%= render 'shared/flashes' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
 
