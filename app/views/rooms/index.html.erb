@@ -11,15 +11,15 @@
     <%= simple_form_for :search, url: rooms_path, method: :get do |t| %>
   <div class="d-flex align-items-top">
       <div class="search1 p-2">
-        <%= t.input :start_date, as: :string, input_html: { class: "datepicker"} %>
+        <%= t.input :start_date, as: :string, input_html: { class: "datepicker", value: params[:search][:start_date] } %>
       </div>
 
       <div class="search2 p-2">
-        <%= t.input :end_date, as: :string, input_html: { class: "datepicker"} %>
+        <%= t.input :end_date, as: :string, input_html: { class: "datepicker", value: params[:search][:end_date] } %>
       </div>
 
       <div class="search3 p-2">
-        <%= t.input :district, collection: ["Mitte", "Prenzlauer Berg", "Wedding"] %>
+        <%= t.input :district, collection: ["Mitte", "Prenzlauer Berg", "Wedding"], selected: params[:district] %>
 
       </div>
 
@@ -32,6 +32,10 @@
 </div>
 
   <div class="container">
+    <% if @rooms.empty? %>
+      <h1>No rooms available for this search</h1>
+    <% end %>
+
     <% @rooms.each do |room| %>
       <div class="card-product">
       <img src= <%= room.image_url %> />
