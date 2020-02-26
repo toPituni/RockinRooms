@@ -1,19 +1,3 @@
-<div class="container">
-  <div class="form-wrapper" style="width: 500px; margin: 0 auto;">
-    <h1>Flatpickr Demo</h1>
-<!-- changing url -original- url: , search_room_path -->
-
-<%= simple_form_for :search, url: rooms_path, method: :get do |t| %>
-<%= t.input :start_date, as: :string, input_html: { class: "datepicker"} %>
-<%= t.input :end_date, as: :string, input_html: { class: "datepicker"} %>
- <%= t.input :district, collection: ["Mitte", "Prenzlauer Berg", "Wedding"] %>
-  <%= t.submit "search", class: "btn btn-primary" %>
-<% end %>
-
-  </div>
-</div>
-
-
 <div class="background_image">
 
   <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
@@ -24,7 +8,6 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
@@ -46,6 +29,34 @@
   </div>
 
   <div class="container">
+
+  <div class="form-wrapper" style="width: 1100px; margin: 0 auto;">
+    <!-- <h1>Flatoickr Demo</h1> -->
+<!-- changing url -original- url: , search_room_path -->
+    <%= simple_form_for :search, url: rooms_path, method: :get do |t| %>
+  <div class="d-flex align-items-top">
+      <div class="search1 p-2">
+        <%= t.input :start_date, as: :string, input_html: { class: "datepicker"} %>
+      </div>
+
+      <div class="search2 p-2">
+        <%= t.input :end_date, as: :string, input_html: { class: "datepicker"} %>
+      </div>
+
+      <div class="search3 p-2">
+        <%= t.input :district, collection: ["Mitte", "Prenzlauer Berg", "Wedding"] %>
+
+      </div>
+
+      <div class="search4 p-2">
+        <%= t.submit "Search", class: "btn btn-flat" %>
+      </div>
+
+    </div>
+    <% end %>
+</div>
+
+  <div class="container">
     <% @rooms.each do |room| %>
       <div class="card-product">
       <img src= <%= room.image_url %> />
@@ -61,4 +72,5 @@
       </div>
     <% end %>
   </div>
+</div>
 </div>
