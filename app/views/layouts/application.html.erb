@@ -35,7 +35,10 @@
     </div>
   </div>
     <%= render 'shared/flashes' %>
-    <%= yield %>
+    <div class="page-wrapper background_image">
+      <%= yield %>
+    </div>
+    <%= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
 
     <%= javascript_pack_tag 'application' %>
