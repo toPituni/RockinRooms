@@ -11,7 +11,6 @@
           <h2 class="price"><strong><%= @room.price %></strong> Złoty / hour</h2>
           <p><strong>Equipment:</strong> <%= @room.equipment %></p>
           <p><strong>Description:</strong> <%= @room.description %></p>
-          <%= link_to "Book now", new_room_booking_path(room_id:@room), class: "btn btn-flat card-product-btn" %>
         </div>
       </div>
   </div>
