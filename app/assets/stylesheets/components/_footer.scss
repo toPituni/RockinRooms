@@ -7,6 +7,9 @@
   height: 75px;
   padding: 0px 50px;
   color: white;
+  position: fixed;
+  width: 100%;
+  display: table-row;
 }
 .footer-links {
   display: flex;
@@ -26,3 +29,6 @@
   color: #D23333;
 }
 
+.page-wrapper {
+  height: calc(100vh - 139px);
+}
