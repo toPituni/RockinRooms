@@ -18,7 +18,7 @@
 </div>
 
 
-
+<%= render 'shared/flashes' %>
 
 
 
@@ -53,17 +53,11 @@
     </div>
   </div>
 
-  <div class="container">
-    <div class="form-wrapper" style="width: 500px; margin: 0 auto;">
-      <h1>Flatoickr Demo</h1>
-  <%= simple_form_for :search, url: search_room_path, method: :get do |t| %>
-  <%= t.input :start_date, as: :string, input_html: { class: "datepicker"} %>
-  <%= t.input :end_date, as: :string, input_html: { class: "datepicker"} %>
-   <%= t.input :district, collection: ["Mitte", "Prenzlauer Berg", "Wedding"] %>
-    <%= t.submit "search", class: "btn btn-primary" %>
-  <% end %>
-    </div>
-  </div>
+
+
+
+
+
 
   <div class="container">
     <% @rooms.each do |room| %>
