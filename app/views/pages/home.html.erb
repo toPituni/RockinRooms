@@ -2,6 +2,7 @@
   <div class="container">
     <h1>Welcome to Rock'in' Rooms</h1>
     <p>Find a room to rock!</p>
-    <a class="btn btn-flat" href="#">Search</a>
+    <%= button_to "Search now!", rooms_path, :id => "open-contacts-dialog-btn",
+      :class => "btn btn-flat", :method => :get %>
   </div>
 </div>
