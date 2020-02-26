@@ -1,9 +1,15 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
 
-<div class="container">
-      <div class="card-product">
+
+<div class="container bookings">
+  <h1>Thank you for your booking!</h1>
+  <p>Here you can find details of your confirmation:</p>
+
+      <div class="confirmation_photo">
       <img src= <%= @room.image_url %> />
+      </div>
+      <br>
+
+      <div class="card-product">
         <div class="card-product-infos">
           <h2><%= @room.name %></h2>
           <p><strong>District:</strong> <%= @room.district %></p>
