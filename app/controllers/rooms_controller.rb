@@ -1,12 +1,15 @@
 class RoomsController < ApplicationController
   def index
     @rooms = Room.all
-    @rooms = filter_district(@rooms) if params[:search][:district].present?
 
-    dates_present = params[:search][:start_date].present? &&
-                    params[:search][:end_date].present?
+    if params[:search].present?
+      @rooms = filter_district(@rooms) if params[:search][:district].present?
 
-    @rooms = filter_dates(@rooms) if dates_present
+      dates_present = params[:search][:start_date].present? &&
+                      params[:search][:end_date].present?
+
+      @rooms = filter_dates(@rooms) if dates_present
+    end
   end
 
   def create
