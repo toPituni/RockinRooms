@@ -9,7 +9,6 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
@@ -24,16 +23,32 @@
   </div>
 
   <div class="container">
-    <div class="form-wrapper" style="width: 500px; margin: 0 auto;">
-      <h1>Flatoickr Demo</h1>
-  <%= simple_form_for :search, url: search_room_path, method: :get do |t| %>
-  <%= t.input :start_date, as: :string, input_html: { class: "datepicker"} %>
-  <%= t.input :end_date, as: :string, input_html: { class: "datepicker"} %>
-   <%= t.input :district, collection: ["Mitte", "Prenzlauer Berg", "Wedding"] %>
-    <%= t.submit "search", class: "btn btn-primary" %>
-  <% end %>
+
+  <div class="form-wrapper" style="width: 1100px; margin: 0 auto;">
+    <!-- <h1>Flatoickr Demo</h1> -->
+<!-- changing url -original- url: , search_room_path -->
+    <%= simple_form_for :search, url: rooms_path, method: :get do |t| %>
+  <div class="d-flex align-items-top">
+      <div class="search1 p-2">
+        <%= t.input :start_date, as: :string, input_html: { class: "datepicker"} %>
+      </div>
+
+      <div class="search2 p-2">
+        <%= t.input :end_date, as: :string, input_html: { class: "datepicker"} %>
+      </div>
+
+      <div class="search3 p-2">
+        <%= t.input :district, collection: ["Mitte", "Prenzlauer Berg", "Wedding"] %>
+
+      </div>
+
+      <div class="search4 p-2">
+        <%= t.submit "Search", class: "btn btn-flat" %>
+      </div>
+
     </div>
-  </div>
+    <% end %>
+</div>
 
   <div class="container">
     <% @rooms.each do |room| %>
@@ -46,13 +61,13 @@
           <h2 class="price"><strong><%= room.price %></strong> Złoty / hour</h2>
           <p><strong>Equipment:</strong> <%= room.equipment %></p>
           <p><strong>Description:</strong> <%= room.description %></p>
-          <%= link_to "Book now", "#", class: "btn btn-flat card-product-btn" %>
+          <%= link_to "Book now", new_room_booking_path(room), class: "btn btn-flat card-product-btn" %>
         </div>
       </div>
     <% end %>
   </div>
 
-  <div class="footer">
+    <div class="footer">
     <div class="footer-links">
       <a href="#"><i class="fab fa-github"></i></a>
       <a href="#"><i class="fab fa-instagram"></i></a>
@@ -64,12 +79,5 @@
       Rock'in'Rooms is made with <i class="fas fa-heart"></i> at Le Wagon.
     </div>
   </div>
-
-
 </div>
-
-
-
-
-<!-- # Check out the UI kit of LeWagon -->
-
+</div>

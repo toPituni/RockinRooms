@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class BookingsControllerTest < ActionDispatch::IntegrationTest
+
   test "should get search" do
     get bookings_search_url
     assert_response :success
