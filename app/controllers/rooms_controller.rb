@@ -12,11 +12,21 @@ class RoomsController < ApplicationController
     end
   end
 
-  def create
+  def new
+    @room = Room.new
   end
 
-  def new
+  def create
+    @room = Room.new(set_room_params)
+
+    if @room.save!
+      raise
+      redirect_to root_path
+    else
+      render :new
+    end
   end
+
 
   private
 
@@ -31,5 +41,9 @@ class RoomsController < ApplicationController
     scope.joins(:bookings)
          .where.not(bookings: { start_time: search_range } )
          .uniq
+  end
+
+  def set_room_params
+    params.require(:room).permit(:name, :description, :address, :district, :equipment, :price)
   end
 end
