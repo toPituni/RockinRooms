@@ -19,10 +19,10 @@ puts "#{User.count} users just created"
 
 
 
-r1 = Room.create!(image_url: 'https://images.pexels.com/photos/164938/pexels-photo-164938.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', name: 'Professional Studio', description: "Fully equipped studio with amazing sound qualities. Suitable for professional music production.5sqm", address: "Rudi-Dutschke-Strasse 5", price: 75, equipment: "fully equipped", district: "Mitte", user: u1 )
-r2 = Room.create!(image_url: 'https://images.pexels.com/photos/1327426/pexels-photo-1327426.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', name: 'Amazing Rehearsal Room', description: "Partly equipped rehearsal room for bands. 35sqm", address: "Linienstrasse 89", price: 50, equipment: "Drum Kit, Microphones, 2 x amplifiers ", district: "Prenzlauer Berg", user: u2 )
-r3 = Room.create!(image_url: 'https://images.pexels.com/photos/1267297/pexels-photo-1267297.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',name: 'Outdoor Rehearsal Room', description: "Enjoy this hawaiian atmoshere in Mitte", address: "Friedrichstrasse 180", price: 30, equipment: "contrabass, drum kit, keyboard", district: "Wedding", user: u3 )
-r4 = Room.create!(image_url: 'https://noisy-musicworld.com/rooms/files/10s-1024x683.jpg',name: 'Soundproof Room', description: "Rock through the night in this soundproof rehearsal room", address: "Unter den Linden 10", price: 80, equipment: "PA, drum kit, keyboard", district: "Mitte", user: u3 )
+r1 = Room.create!(image_url: 'https://images.pexels.com/photos/164938/pexels-photo-164938.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', name: 'Professional Studio', description: "Fully equipped studio with amazing sound qualities. Suitable for professional music production.5sqm", address: "Rudi-Dutschke-Strasse 26, Berlin", price: 75, equipment: "fully equipped", district: "Mitte", user: u1 )
+r2 = Room.create!(image_url: 'https://images.pexels.com/photos/1327426/pexels-photo-1327426.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', name: 'Amazing Rehearsal Room', description: "Partly equipped rehearsal room for bands. 35sqm", address: "Kremmener Str. 9, Berlin", price: 50, equipment: "Drum Kit, Microphones, 2 x amplifiers ", district: "Prenzlauer Berg", user: u2 )
+r3 = Room.create!(image_url: 'https://images.pexels.com/photos/1267297/pexels-photo-1267297.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',name: 'Outdoor Rehearsal Room', description: "Enjoy this hawaiian atmoshere in Mitte", address: "Friedrichstrasse 180, Berlin", price: 30, equipment: "contrabass, drum kit, keyboard", district: "Wedding", user: u3 )
+r4 = Room.create!(image_url: 'https://noisy-musicworld.com/rooms/files/10s-1024x683.jpg',name: 'Soundproof Room', description: "Rock through the night in this soundproof rehearsal room", address: "Unter den Linden 10, Berlin", price: 80, equipment: "PA, drum kit, keyboard", district: "Mitte", user: u3 )
 
 
 puts "#{Room.count} rooms just created"
