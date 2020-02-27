@@ -35,6 +35,22 @@ class RoomsController < ApplicationController
     end
   end
 
+  def edit
+    @room = Room.find(params[:id])
+  end
+
+  def update
+    room = Room.find(params[:id])
+    room.user_id = current_user.id
+    room.update(set_room_params)
+    redirect_to root_path
+  end
+
+  def destroy
+    room.user_id = current_user.id
+    room = Room.delete
+  end
+
 
   private
 
