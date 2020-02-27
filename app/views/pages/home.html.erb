@@ -4,5 +4,11 @@
     <p>Find a room to rock!</p>
     <%= button_to "Search now!", rooms_path, :id => "open-contacts-dialog-btn",
       :class => "btn btn-flat", :method => :get %>
+      <br><br>
+      <% if !user_signed_in? %>
+         <%= button_to "Sign in", new_user_session_path, :id => "open-contacts-dialog-btn",
+      :class => "btn btn-flat" %>
+      <% end %>
+
   </div>
 </div>
