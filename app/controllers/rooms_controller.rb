@@ -1,7 +1,16 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = Room.all
+    @geo_rooms = Room.geocoded #returns flats with coordinates
+    @markers = @geo_rooms.map do |room|
+      {
+        lat: room.latitude,
+        lng: room.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { room: room })
+      }
+    end
+    #--------------map above---------------------#
 
+    @rooms = Room.all
     if params[:search].present?
       @rooms = filter_district(@rooms) if params[:search][:district].present?
 
