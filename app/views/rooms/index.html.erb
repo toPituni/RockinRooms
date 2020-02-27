@@ -36,7 +36,8 @@
       height: 600px;"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-    ></div>
+      >
+    </div>
 
   <div class="container">
     <% if @rooms.empty? %>
@@ -53,10 +54,15 @@
           <h2 class="price"><strong><%= room.price %></strong> Złoty / hour</h2>
           <p><strong>Equipment:</strong> <%= room.equipment %></p>
           <p><strong>Description:</strong> <%= room.description %></p>
-          <%= link_to "Book now", new_room_booking_path(room), class: "btn btn-flat card-product-btn" %>
+          <!-- i inserted a -value -->
+          <%= link_to "Book now", room_bookings_path(room, start_time: @start, end_time: @end), class: "btn btn-flat card-product-btn", method: :post%>
+
         </div>
+
       </div>
     <% end %>
+
+
   </div>
 
 </div>

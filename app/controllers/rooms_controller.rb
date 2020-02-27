@@ -10,6 +10,7 @@ class RoomsController < ApplicationController
     end
     #--------------map above---------------------#
 
+
     @rooms = Room.all
     if params[:search].present?
       @rooms = filter_district(@rooms) if params[:search][:district].present?
@@ -18,7 +19,12 @@ class RoomsController < ApplicationController
                       params[:search][:end_date].present?
 
       @rooms = filter_dates(@rooms) if dates_present
+
+      #  this is storing dates for next link ( book)
+      @start = params[:search][:start_date]
+      @end = params[:search][:end_date]
     end
+
   end
 
   def new
