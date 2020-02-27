@@ -28,9 +28,10 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(set_room_params)
     @room.user_id = current_user.id
-    if @room.save!
-      redirect_to rooms_path
+    if @room.save
+      redirect_to dashboard_index_path
     else
+      p @room.errors.messages
       render :new
     end
   end
@@ -43,12 +44,14 @@ class RoomsController < ApplicationController
     room = Room.find(params[:id])
     room.user_id = current_user.id
     room.update(set_room_params)
-    redirect_to root_path
+    redirect_to dashboard_index_path
   end
 
   def destroy
-    room.user_id = current_user.id
-    room = Room.delete
+    room = Room.find(params[:id])
+    #room.user_id = current_user.id
+    room.delete
+    redirect_to dashboard_index_path
   end
 
 
