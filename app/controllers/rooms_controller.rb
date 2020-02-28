@@ -19,7 +19,6 @@ class RoomsController < ApplicationController
     #--------------map ---------------------#
     @rooms = Room.all if @rooms.empty?
     @geo_rooms = @rooms.geocoded.distinct #returns flats with coordinates
-    raise
     @markers = @geo_rooms.map do |room|
       {
         lat: room.latitude,
