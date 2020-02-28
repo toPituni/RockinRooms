@@ -12,19 +12,29 @@
       <% duration = (Booking.last[:end_time].to_time - Booking.last[:start_time].to_time)/3600 %>
       <% duration *=  @room.price %>
 
-      <div class="card-product">
-        <div class="card-product-infos">
-          <h2><%= @room.name %></h2>
-          <p><strong>District:</strong> <%= @room.district %></p>
-          <p><strong>Address:</strong> <%= @room.address %></p>
-          <h2 class="price"><strong><%= duration %></strong> Złoty / hour</h2>
-          <p><strong>Equipment:</strong> <%= @room.equipment %></p>
-          <p><strong>Description:</strong> <%= @room.description %></p>
+      <% @bookings.each do |booking| %>
+        <div class="card-product">
+        <img src= <%= booking.room.image_url %> />
+          <div class="card-product-infos">
+            <h2><%= booking.room.name %></h2>
+            <p><strong>District:</strong> <%= booking.room.district %></p>
+            <p><strong>Address:</strong> <%= booking.room.address %></p>
+            <h2 class="price"><strong><%= booking.room.price %></strong> Złoty / hour</h2>
+            <p><strong>Equipment:</strong> <%= booking.room.equipment %></p>
+            <p><strong>Description:</strong> <%= booking.room.description %></p>
+            <p><strong>Start date:</strong> <%= booking.start_time %></p>
+            <p><strong>End date:</strong> <%= booking.end_time %></p>
+            <div class="card-product-div">
+            <%= link_to "Delete", booking_path(booking), method: :delete,  class: "btn btn-flat" %>
+            </div>
+            <br>
+          </div>
         </div>
-      </div>
-
+      <% end %>
   </div>
 <br><br>
-<%= link_to "Back", rooms_path, class: "btn btn-flat card-product-btn"%>
 
+<div class="container">
+
+</div>
 
