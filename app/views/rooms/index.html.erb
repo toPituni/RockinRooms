@@ -6,8 +6,8 @@
   <div class="container">
 
     <div class="form-wrapper" style="width: 1100px; margin: 0 auto;">
-    <!-- <h1>Flatoickr Demo</h1> -->
-<!-- changing url -original- url: , search_room_path -->
+
+      <!--------------------FORM TO SELECT DATES AND DISTRICT--------->
       <%= simple_form_for :search, url: rooms_path, method: :get do |t| %>
         <div class="d-flex align-items-top">
           <div class="search1 p-2">
@@ -30,6 +30,7 @@
       <% end %>
     </div>
 
+    <!-------------------------- RENDERING MAP HERE --------------->
     <div
       id="map"
       style="width: 100%;
@@ -38,12 +39,12 @@
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
       >
     </div>
-
-  <div class="container">
-    <% if @rooms.empty? %>
+    <!-- Do we need this?-->
+    <div class="container">
+     <% if @rooms.empty? %>
       <h1>No rooms available for this search</h1>
     <% end %>
-
+    <!---------------------- LISTING ALL OR FILTERED ROOMS  ------>
     <% @rooms.each do |room| %>
       <div class="card-product">
       <img src= <%= room.image_url %> />
@@ -54,14 +55,15 @@
           <h2 class="price"><strong><%= room.price %></strong> Złoty / hour</h2>
           <p><strong>Equipment:</strong> <%= room.equipment %></p>
           <p><strong>Description:</strong> <%= room.description %></p>
-          <!-- i inserted a -value -->
-          <%= link_to "Book now", room_bookings_path(room, start_time: @start, end_time: @end), class: "btn btn-flat card-product-btn", method: :post%>
-
+          <!-- saved dates in #index method as instance variable , from here these values are passing to booking) -->
+          <!-- CHECKING WHETHER THE ROOMS ARE DISPLAYING AFTER A SEARCH , IF YES THEN DISPLAY Book now BUTTON -->
+          <%if @start  %>
+          <%= link_to "Book now", room_bookings_path(room, start_time: @start, end_time: @end), class: "btn btn-flat card-product-btn", id: "btnbook", method: :post%>
+          <% end %>
         </div>
 
       </div>
     <% end %>
-
 
   </div>
 

@@ -10,31 +10,32 @@ class BookingsController < ApplicationController
 
   def create
     # got room id
-    @room = Room.find(params[:room_id])
+    if user_signed_in?
+      @room = Room.find(params[:room_id])
 
-    # have to find out dates,this v are getting from rooms#index
-    start_at = params[:start_time]
-    end_at = params[:end_time]
+    # have to find out dates,this we are getting from rooms#index as params
+      start_at = params[:start_time]
+      end_at = params[:end_time]
 
-    # @booking.room_id = @room
-    @booking = Booking.new
+      @booking = Booking.new
 
     # setting all values
-    @booking.start_time = start_at
-    @booking.end_time = end_at
-    @booking.user_id = current_user.id
-    @booking.room_id = @room.id
+      @booking.start_time = start_at
+      @booking.end_time = end_at
+      @booking.user_id = current_user.id
+      @booking.room_id = @room.id
 
-raise
     # create a new booking
-    if @booking.save!
-      redirect_to new_room_booking_path(@room)
-    else
-      render 'rooms/index'
+      if @booking.save!
+      # shows the booked room's details
+        redirect_to room_path(@room)
+      else
+        render 'rooms/index'
+      end
     end
   end
 
-  private
+  # private
 
   # def set_room_params
   #   params.require(:booking).permit(:room_id)
