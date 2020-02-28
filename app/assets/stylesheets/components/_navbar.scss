@@ -4,6 +4,7 @@
   opacity: 0.85;
   position: fixed;
   width: 100%;
+  z-index: 3;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -14,7 +15,13 @@
   width: 40px;
 }
 
-.user-mail {
-color: white;
+#nav-items-color li {
+  color: white;
+  a {
+  color: white;
+  }
+}
 
+#dd-links-black div a {
+  color: black;
 }
