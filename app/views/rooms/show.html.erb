@@ -1,11 +1,8 @@
-
-
 <div class="container bookings">
   <h1>Thank you for your booking!</h1>
   <p>Here you can find details of your confirmation:</p>
 
       <div class="confirmation_photo">
-        <% raise %>
       <img src= <%= @room.image_url %> />
       </div>
       <br>
@@ -21,5 +18,5 @@
         </div>
       </div>
 
-
   </div>
+<%= link_to "Back", rooms_path, class: "btn btn-flat card-product-btn"%>

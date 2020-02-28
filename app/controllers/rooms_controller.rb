@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   def index
+    #--------------map ---------------------#
     @geo_rooms = Room.geocoded #returns flats with coordinates
     @markers = @geo_rooms.map do |room|
       {
@@ -8,7 +9,8 @@ class RoomsController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { room: room })
       }
     end
-    #--------------map above---------------------#
+
+    #--------------Display all rooms/ only filtered list of rooms ------#
 
     @rooms = Room.all
     if params[:search].present?
@@ -18,9 +20,20 @@ class RoomsController < ApplicationController
                       params[:search][:end_date].present?
 
       @rooms = filter_dates(@rooms) if dates_present
+
+      #  this is storing dates for next link (Book - button)
+      @start = params[:search][:start_date]
+      @end = params[:search][:end_date]
     end
+
   end
 
+  #------------------- To show booked room details ------------------#
+  def show
+    @room = Room.find(params[:id])
+  end
+
+  #------------------- To create a new room-------------------------#
   def new
     @room = Room.new
   end
@@ -35,6 +48,9 @@ class RoomsController < ApplicationController
       render :new
     end
   end
+
+
+  #------------------- To filtering district and dates----------------#
 
   def edit
     @room = Room.find(params[:id])
@@ -55,6 +71,7 @@ class RoomsController < ApplicationController
   end
 
 
+
   private
 
   def filter_district(scope)
@@ -70,6 +87,7 @@ class RoomsController < ApplicationController
          .uniq
   end
 
+  #------------------- setting params for creating new room -------------#
   def set_room_params
     params.require(:room).permit(:name, :description, :address, :district, :equipment, :price)
   end
