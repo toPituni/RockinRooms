@@ -18,7 +18,8 @@ class RoomsController < ApplicationController
     end
     #--------------map ---------------------#
     @rooms = Room.all if @rooms.empty?
-    @geo_rooms = @rooms.geocoded #returns flats with coordinates
+    @geo_rooms = @rooms.geocoded.distinct #returns flats with coordinates
+    raise
     @markers = @geo_rooms.map do |room|
       {
         lat: room.latitude,
@@ -82,9 +83,8 @@ class RoomsController < ApplicationController
     start_time = params[:search][:start_date]
     end_time = params[:search][:end_date]
     search_range = start_time.to_time.utc..end_time.to_time.utc
-    scope.joins(:bookings)
+    testing = scope.joins(:bookings)
          .where.not(bookings: { start_time: search_range } )
-         .uniq
   end
 
   #------------------- setting params for creating new room -------------#
