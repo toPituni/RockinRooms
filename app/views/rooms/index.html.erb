@@ -16,7 +16,7 @@
             <%= t.input :end_date, as: :string, input_html: { class: "datepicker", value: params.dig(:search, :end_date) } %>
 
             <div class="search3 p-2">
-              <%= t.input :district, collection: ["Mitte", "Prenzlauer Berg", "Wedding"], selected:  params.dig(:search, :district) %>
+              <%= t.input :district, collection: ["Charlottenburg", "Wilmersdorf", "Friedrichshain", "Kreuzberg", "Mitte", "Prenzlauer Berg", "Lichtenberg", "Wedding", "Neukölln", "Pankow", "Reinickendorf", "Spandau", "Steglitz", "Tempelhof", "Schöneberg", "Treptow", "Hohenschönhausen", "Marzahn", "Hellersdorf", "Köpenick", "Zehlendorf"], selected:  params.dig(:search, :district) %>
             </div>
 
             <div class="search4 p-2">
