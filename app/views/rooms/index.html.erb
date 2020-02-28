@@ -3,16 +3,17 @@
 
     <div class="form-wrapper" style="width: 1300px; margin: 0 auto;">
 
-      <!--------------------FORM TO SELECT DATES AND DISTRICT--------->
-        <%= simple_form_for :search, url: rooms_path, method: :get do |t| %>
-          <div class="d-flex align-items-top">
-            <div class="search1 p-2">
-              <%= t.input :start_date, as: :string, input_html: { class: "datepicker", value: params.dig(:search, :end_date) } %>
-            </div>
+      
 
-            <div class="search2 p-2">
-              <%= t.input :end_date, as: :string, input_html: { class: "datepicker", value: params.dig(:search, :start_date) } %>
-            </div>
+      <!--------------------FORM TO SELECT DATES AND DISTRICT--------->
+      <%= simple_form_for :search, url: rooms_path, method: :get do |t| %>
+        <div class="d-flex align-items-top">
+          <div class="search1 p-2">
+            <%= t.input :start_date, as: :string, input_html: { class: "datepicker", value: params.dig(:search, :start_date) } %>
+          </div>
+
+          <div class="search2 p-2">
+            <%= t.input :end_date, as: :string, input_html: { class: "datepicker", value: params.dig(:search, :end_date) } %>
 
             <div class="search3 p-2">
               <%= t.input :district, collection: ["Mitte", "Prenzlauer Berg", "Wedding"], selected:  params.dig(:search, :district) %>
@@ -21,6 +22,7 @@
             <div class="search4 p-2">
               <%= t.submit "Search", class: "btn btn-flat" %>
             </div>
+
           </div>
         <% end %>
       </div>

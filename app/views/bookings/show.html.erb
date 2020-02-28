@@ -1,2 +1,26 @@
 <h1>Bookings#show</h1>
 <p>Find me in app/views/bookings/show.html.erb</p>
+
+<div class="container bookings">
+  <h1>Thank you for your booking!</h1>
+  <p>Here you can find details of your confirmation:</p>
+
+      <div class="confirmation_photo">
+        <% raise %>
+      <img src= <%= @room.image_url %> />
+      </div>
+      <br>
+
+      <div class="card-product">
+        <div class="card-product-infos">
+          <h2><%= @room.name %></h2>
+          <p><strong>District:</strong> <%= @room.district %></p>
+          <p><strong>Address:</strong> <%= @room.address %></p>
+          <h2 class="price"><strong><%= @room.price %></strong> Złoty / hour</h2>
+          <p><strong>Equipment:</strong> <%= @room.equipment %></p>
+          <p><strong>Description:</strong> <%= @room.description %></p>
+        </div>
+      </div>
+
+
+  </div>

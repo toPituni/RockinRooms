@@ -26,10 +26,14 @@ class BookingsController < ApplicationController
       @booking.user_id = current_user.id
       @booking.room_id = @room.id
 
+      # -------finding duration
+      @duration = (end_at.to_time - start_at.to_time)/3600
+
     # create a new booking
       if @booking.save!
       # shows the booked room's details
         redirect_to room_path(@room)
+        # redirect_to room_path(@room)
       else
         render 'rooms/index'
       end

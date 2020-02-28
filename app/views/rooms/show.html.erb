@@ -1,3 +1,4 @@
+<!--------------Showing booked room's details  ------------->
 <div class="container bookings">
   <h1>Thank you for your booking!</h1>
   <p>Here you can find details of your confirmation:</p>
@@ -6,17 +7,24 @@
       <img src= <%= @room.image_url %> />
       </div>
       <br>
+      <!-- find out duration -->
+
+      <% duration = (Booking.last[:end_time].to_time - Booking.last[:start_time].to_time)/3600 %>
+      <% duration *=  @room.price %>
 
       <div class="card-product">
         <div class="card-product-infos">
           <h2><%= @room.name %></h2>
           <p><strong>District:</strong> <%= @room.district %></p>
           <p><strong>Address:</strong> <%= @room.address %></p>
-          <h2 class="price"><strong><%= @room.price %></strong> Złoty / hour</h2>
+          <h2 class="price"><strong><%= duration %></strong> Złoty / hour</h2>
           <p><strong>Equipment:</strong> <%= @room.equipment %></p>
           <p><strong>Description:</strong> <%= @room.description %></p>
         </div>
       </div>
 
   </div>
+<br><br>
 <%= link_to "Back", rooms_path, class: "btn btn-flat card-product-btn"%>
+
+
