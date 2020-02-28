@@ -1,14 +1,5 @@
 class RoomsController < ApplicationController
   def index
-    #--------------map ---------------------#
-    @geo_rooms = Room.geocoded #returns flats with coordinates
-    @markers = @geo_rooms.map do |room|
-      {
-        lat: room.latitude,
-        lng: room.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { room: room })
-      }
-    end
 
     #--------------Display all rooms/ only filtered list of rooms ------#
 
@@ -25,7 +16,16 @@ class RoomsController < ApplicationController
       @start = params[:search][:start_date]
       @end = params[:search][:end_date]
     end
-
+    #--------------map ---------------------#
+    @rooms = Room.all if @rooms.empty?
+    @geo_rooms = @rooms.geocoded #returns flats with coordinates
+    @markers = @geo_rooms.map do |room|
+      {
+        lat: room.latitude,
+        lng: room.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { room: room })
+      }
+    end
   end
 
   #------------------- To show booked room details ------------------#
