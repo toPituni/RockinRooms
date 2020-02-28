@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="width: 500px">
   <h1>Create a new room</h1>
   <br>
   <%= simple_form_for(@room) do |f| %>
@@ -14,8 +14,13 @@
     <br>
     <%= f.input :price %>
     <br>
-    <%= f.submit %>
+
+     <div class="form-actions btn btn-flat">
+      <%= f.button :submit, "Create" %>
+      <br>
+    </div>
   <% end %>
+  <br>
 </div>
 
 <!-- <form action="/restaurants" method="get">

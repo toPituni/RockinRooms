@@ -18,6 +18,7 @@ class RoomsController < ApplicationController
     end
     #--------------map ---------------------#
     @rooms = Room.all if @rooms.empty?
+    
     @geo_rooms = @rooms.geocoded #returns flats with coordinates
 
     @markers = @geo_rooms.map do |room|
