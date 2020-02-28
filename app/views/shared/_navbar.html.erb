@@ -9,19 +9,28 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active user-mail">
-          <% if current_user.present? %>
-           <%= current_user.email %>
-        <% end %>
-      </li>
+        <% if user_signed_in? %>
+        <li class="nav-item active">
+          <%= link_to "Home", rooms_path, class: "nav-link" %>
+        </li>
         <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Dashboard", dashboard_index_path, class: "dropdown-item" %>
             <%= link_to "Rooms overview", rooms_path, class: "dropdown-item" %>
-            <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
+        <% else %>
+        <li class="nav-item active">
+          <%= link_to('Signup', new_user_registration_path, class: "nav-link") %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to('Login', new_user_session_path, class: "nav-link") %>
+        </li>
+      <% end %>
       </ul>
     </div>
   </div>
+
+
