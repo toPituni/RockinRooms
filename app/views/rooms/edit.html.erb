@@ -1,0 +1,22 @@
+
+
+<div class="container">
+  <h1>Edit your room</h1>
+  <br>
+    <%= simple_form_for(@room) do |f| %>
+      <%= f.input :name %>
+      <br>
+      <%= f.input :description %>
+      <br>
+      <%= f.input :address %>
+      <br>
+      <%= f.input :district %>
+      <br>
+      <%= f.input :equipment %>
+      <br>
+      <%= f.input :price %>
+      <br>
+      <%= f.submit "Update", class: "btn btn-flat" %>
+    <% end %>
+  <br>
+</div>

@@ -41,14 +41,37 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(set_room_params)
     @room.user_id = current_user.id
-    if @room.save!
-      redirect_to rooms_path
+    if @room.save
+      redirect_to dashboard_index_path
     else
+      p @room.errors.messages
       render :new
     end
   end
 
+
   #------------------- To filtering district and dates----------------#
+
+  def edit
+    @room = Room.find(params[:id])
+  end
+
+  def update
+    room = Room.find(params[:id])
+    room.user_id = current_user.id
+    room.update(set_room_params)
+    redirect_to dashboard_index_path
+  end
+
+  def destroy
+    room = Room.find(params[:id])
+    #room.user_id = current_user.id
+    room.delete
+    redirect_to dashboard_index_path
+  end
+
+
+
   private
 
   def filter_district(scope)

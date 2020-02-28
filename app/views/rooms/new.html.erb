@@ -1,25 +1,18 @@
-<h1>Rooms#new</h1>
-<p>Find me in app/views/rooms/new.html.erb</p>
-
 <div class="container">
-  <%= form_for(@room) do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <h1>Create a new room</h1>
+  <br>
+  <%= simple_form_for(@room) do |f| %>
+    <%= f.input :name %>
     <br>
-    <%= f.label :description %>
-    <%= f.text_field :description %>
+    <%= f.input :description %>
     <br>
-    <%= f.label :address %>
-    <%= f.text_field :address %>
+    <%= f.input :address %>
     <br>
-    <%= f.label :district %>
-    <%= f.text_field :district %>
+    <%= f.input :district %>
     <br>
-    <%= f.label :equipment %>
-    <%= f.text_field :equipment %>
+    <%= f.input :equipment %>
     <br>
-    <%= f.label :price %>
-    <%= f.text_field :price %>
+    <%= f.input :price %>
     <br>
     <%= f.submit %>
   <% end %>

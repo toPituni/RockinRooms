@@ -1,15 +1,16 @@
-.btn-flat {
-  color: white;
+.btn-empty {
+  color: #70D0F9;
   padding: 8px 24px;
   border-radius: 4px;
-  background: #70D0F9;
+  border: solid 2px;
+  border-color: #70D0F9;
   transition: background 0.3s ease;
   width: 150px;
-  // height: 45px;
+  height: 43px;
   font-weight: lighter;
 }
 
-.btn-flat:hover {
+.btn-empty:hover {
   background: #70D0F9;
   color: white;
 }
