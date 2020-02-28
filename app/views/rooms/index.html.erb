@@ -11,11 +11,11 @@
       <%= simple_form_for :search, url: rooms_path, method: :get do |t| %>
         <div class="d-flex align-items-top">
           <div class="search1 p-2">
-            <%= t.input :start_date, as: :string, input_html: { class: "datepicker", value: params.dig(:search, :end_date) } %>
+            <%= t.input :start_date, as: :string, input_html: { class: "datepicker", value: params.dig(:search, :start_date) } %>
           </div>
 
           <div class="search2 p-2">
-            <%= t.input :end_date, as: :string, input_html: { class: "datepicker", value: params.dig(:search, :start_date) } %>
+            <%= t.input :end_date, as: :string, input_html: { class: "datepicker", value: params.dig(:search, :end_date) } %>
           </div>
 
           <div class="search3 p-2">
