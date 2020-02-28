@@ -1,64 +1,65 @@
 
 <%= render 'shared/flashes' %>
 
-<div class="">
+    <div class="form-wrapper" style="width: 1300px; margin: 0 auto;">
 
-  <div class="container">
+      <!--------------------FORM TO SELECT DATES AND DISTRICT--------->
+        <%= simple_form_for :search, url: rooms_path, method: :get do |t| %>
+          <div class="d-flex align-items-top">
+            <div class="search1 p-2">
+              <%= t.input :start_date, as: :string, input_html: { class: "datepicker", value: params.dig(:search, :end_date) } %>
+            </div>
 
-    <div class="form-wrapper" style="width: 1100px; margin: 0 auto;">
-    <!-- <h1>Flatoickr Demo</h1> -->
-<!-- changing url -original- url: , search_room_path -->
-      <%= simple_form_for :search, url: rooms_path, method: :get do |t| %>
-        <div class="d-flex align-items-top">
-          <div class="search1 p-2">
-            <%= t.input :start_date, as: :string, input_html: { class: "datepicker", value: params.dig(:search, :end_date) } %>
+            <div class="search2 p-2">
+              <%= t.input :end_date, as: :string, input_html: { class: "datepicker", value: params.dig(:search, :start_date) } %>
+            </div>
+
+            <div class="search3 p-2">
+              <%= t.input :district, collection: ["Mitte", "Prenzlauer Berg", "Wedding"], selected:  params.dig(:search, :district) %>
+            </div>
+
+            <div class="search4 p-2">
+              <%= t.submit "Search", class: "btn btn-flat" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+
+    <div class="map-container">
+          <!---------------------- LISTING ALL OR FILTERED ROOMS  ------>
+          <div class="cards" style="margin-left: 30px">
+            <% @rooms.each do |room| %>
+            <div class="card-product">
+            <img src= <%= room.image_url %> />
+              <div class="card-product-infos">
+                <h2><%= room.name %></h2>
+                <p><strong>District:</strong> <%= room.district %></p>
+                <p><strong>Address:</strong> <%= room.address %></p>
+                <h2 class="price"><strong><%= room.price %></strong> Złoty / hour</h2>
+                <p><strong>Equipment:</strong> <%= room.equipment %></p>
+                <p><strong>Description:</strong> <%= room.description %></p>
+                <!-- saved dates in #index method as instance variable , from here these values are passing to booking) -->
+                <!-- CHECKING WHETHER THE ROOMS ARE DISPLAYING AFTER A SEARCH , IF YES THEN DISPLAY Book now BUTTON -->
+                <%if @start  %>
+                <%= link_to "Book now", room_bookings_path(room, start_time: @start, end_time: @end), class: "btn btn-flat card-product-btn", id: "btnbook", method: :post%>
+                <% end %>
+              </div>
+            </div>
+            <% end %>
           </div>
 
-          <div class="search2 p-2">
-            <%= t.input :end_date, as: :string, input_html: { class: "datepicker", value: params.dig(:search, :start_date) } %>
-          </div>
-
-          <div class="search3 p-2">
-            <%= t.input :district, collection: ["Mitte", "Prenzlauer Berg", "Wedding"], selected:  params.dig(:search, :district) %>
-          </div>
-
-          <div class="search4 p-2">
-            <%= t.submit "Search", class: "btn btn-flat" %>
-          </div>
-
-        </div>
+        <!-------------------------- RENDERING MAP HERE --------------->
+      <div
+        id="map"
+        style="width: 35%;
+        height: 780px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        >
+      </div>
+      <!-- Do we need this?-->
+       <% if @rooms.empty? %>
+        <h1>No rooms available for this search</h1>
       <% end %>
     </div>
-
-    <div
-      id="map"
-      style="width: 100%;
-      height: 600px;"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-    ></div>
-
-  <div class="container">
-    <% if @rooms.empty? %>
-      <h1>No rooms available for this search</h1>
-    <% end %>
-
-    <% @rooms.each do |room| %>
-      <div class="card-product">
-      <img src= <%= room.image_url %> />
-        <div class="card-product-infos">
-          <h2><%= room.name %></h2>
-          <p><strong>District:</strong> <%= room.district %></p>
-          <p><strong>Address:</strong> <%= room.address %></p>
-          <h2 class="price"><strong><%= room.price %></strong> Złoty / hour</h2>
-          <p><strong>Equipment:</strong> <%= room.equipment %></p>
-          <p><strong>Description:</strong> <%= room.description %></p>
-          <%= link_to "Book now", new_room_booking_path(room), class: "btn btn-flat card-product-btn" %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-
-</div>
-
-</div>

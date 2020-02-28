@@ -1,5 +1,7 @@
 class DashboardController < ApplicationController
   def index
-    @rooms = Room.all.where(user: current_user)
+
+    @rooms = Room.where(user: current_user)
+    @bookings = Booking.where(user: current_user)
   end
 end

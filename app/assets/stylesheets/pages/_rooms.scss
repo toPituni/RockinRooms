@@ -6,3 +6,18 @@
 .flatpickr {
     wrap: true
 }
+
+.map-container {
+  display: flex;
+}
+
+#map {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.cards {
+  flex-grow: 1;
+}
+

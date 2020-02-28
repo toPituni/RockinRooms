@@ -14,3 +14,11 @@ enableTime: true,
 
 
 initMapbox();
+
+// things event listener on book now button btnbook
+// const romain = document.getElementById("btnbook");
+// romain.addEventListener("click", (event) => {
+//   alert("Please Log in");
+
+// });
+
