@@ -11,6 +11,7 @@ class BookingsController < ApplicationController
   def create
     # got room id
     if user_signed_in?
+      @bookings = Booking.all
       @room = Room.find(params[:room_id])
 
     # have to find out dates,this we are getting from rooms#index as params
@@ -33,6 +34,12 @@ class BookingsController < ApplicationController
         render 'rooms/index'
       end
     end
+  end
+
+   def destroy
+    booking = Booking.find(params[:id])
+    booking.delete
+    redirect_to dashboard_index_path
   end
 
   # private
