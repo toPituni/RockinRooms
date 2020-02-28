@@ -2,7 +2,7 @@ class RoomsController < ApplicationController
   def index
 
     #--------------Display all rooms/ only filtered list of rooms ------#
-
+    @bookings = Booking.where(user: current_user)
     @rooms = Room.all
     if params[:search].present?
       @rooms = filter_district(@rooms) if params[:search][:district].present?
